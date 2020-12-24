@@ -1,1 +1,459 @@
 /* You can add global styles to this file, and also import other style files */
+body
+  font-family: 'Roboto', sans-serif
+  margin: 0
+  font-size: 16px
+  background: linear-gradient(to bottom, #eff5fc, #eff5fc)
+
+*
+  box-sizing: border-box
+
+.orders
+  max-width: 1300px
+  margin: 80px auto
+  display: flex
+
+.orders-side
+  background: #0e4fdb
+  border-radius: 6px
+  margin-right: 30px
+  max-width: 70px
+
+.orders-side-logo
+  margin: 0 15px
+  margin-top: 15px
+  color: #fff
+  text-transform: uppercase
+  font-weight: 300
+  font-size: 16px
+
+  span
+    display: block
+    font-weight: 400
+
+.orders-side-menu
+  display: flex
+  flex-direction: column
+  margin-top: 70px
+  a, button
+    text-align: center
+    text-decoration: none
+    font-size: 12px
+    color: #fff
+    padding: 10px 10px
+    background: none
+    border: none
+
+    &.active
+      background: #fff
+      color: #0e4fdb
+
+    img
+      height: 40px
+      display: inline-block
+      margin-bottom: 10px
+      width: 40px
+      border: 1px solid #ffffff
+
+    &.active img
+      border-color: #0e4fdb
+
+.orders-ttl
+  margin: 0 0 20px
+  font-weight: 400
+
+.orders-user
+  font-size: 14px
+  opacity: 0.6
+  margin-bottom: 20px
+
+.orders-top
+  display: flex
+  justify-content: space-between
+  width: 100%
+  align-items: center
+
+.orders-container
+  flex: 1
+
+.orders-tbl
+  background: #fff
+  padding: 25px 35px
+  border-radius: 6px
+
+.orders-add button
+  display: block
+  width: 200px
+  background: #0e4fdb
+  border: 0
+  border-radius: 25px
+  color: #fff
+  text-transform: uppercase
+  padding: 15px
+  margin-bottom: 20px
+  cursor: pointer
+  padding-left: 35px
+  overflow: hidden
+  position: relative
+  text-align: center
+
+  &:before
+    content: '+'
+    position: absolute
+    display: block
+    left: 0
+    top: 0
+    width: 37px
+    height: 100%
+    font-weight: 300
+    font-size: 30px
+    line-height: 46px
+    background: #0645c8
+
+.orders-tbl-row
+  display: flex
+  font-size: 14px
+  border-radius: 6px
+  border-bottom: 1px solid #ececec
+  cursor: pointer
+  position: relative
+
+  &:hover
+    background: #ececec
+
+  &.head
+    border-bottom: 0
+
+    &:hover
+      background: #fff
+      cursor: default
+
+.orders-tbl-id
+  width: 104px
+  padding: 0 15px
+
+.orders-tbl-name
+  padding: 0 15px
+  width: 237px
+
+.orders-tbl-phone
+  padding: 0 15px
+  width: 133px
+
+.orders-tbl-prod
+  padding: 0 15px
+  width: 334px
+
+.orders-tbl-npNum
+  padding: 0 15px
+  width: 160px
+
+.orders-tbl-stat
+  padding: 0 15px
+  width: 120px
+
+.orders-tbl-row
+  padding: 12px 0px
+
+.orders-tbl-delete
+  position: absolute
+  right: 0
+  height: 100%
+  top: 0
+  display: none
+  align-items: center
+  width: 40px
+  justify-content: center
+  font-size: 20px
+  background: #fff
+  box-shadow: -6px 0px 8px 0px #fff
+  cursor: pointer
+
+.orders-tbl-row:hover .orders-tbl-delete
+  display: flex
+
+.orders-tbl-stat span
+  border-radius: 25px
+  color: #fff
+  padding: 3px 10px
+
+  &.new
+    background: #2ab4e7
+
+  &.sent
+    background: #8c49e8
+
+  &.done
+    background: #00b84f
+
+  &.break
+    background: #f86368
+
+  &.ready
+    background: #e8cd49
+    white-space: nowrap
+
+.stock-tbl
+  background: #fff
+  padding: 25px 35px
+  border-radius: 6px
+
+.stock-tbl-row
+  display: flex
+  font-size: 14px
+  border-radius: 6px
+  border-bottom: 1px solid #ececec
+  cursor: pointer
+  padding: 12px 0px
+
+  &.head
+    border-bottom: 0
+
+  &:hover
+    background: #ececec
+
+  &.head:hover
+    background: #fff
+    cursor: default
+
+.stock-tbl-id
+  width: 104px
+  padding: 0 15px
+
+.stock-tbl-name
+  padding: 0 15px
+  width: 386px
+
+.stock-tbl-code
+  padding: 0 15px
+  width: 250px
+
+.stock-tbl-price
+  padding: 0 15px
+  width: 270px
+
+.stock-tbl-count
+  padding: 0 15px
+  width: 120px
+
+.modl_order
+  position: fixed
+  width: 100vw
+  height: 100vh
+  z-index: 3
+  top: 0
+  left: 0
+
+.modl_order-overlay
+  width: 100vw
+  height: 100vh
+  position: fixed
+  z-index: 1
+  background: #ffffff6e
+
+.modl_order-cont
+  background: #fff
+  border-radius: 6px
+  padding: 25px 35px
+  position: fixed
+  margin: auto auto
+  left: 0
+  right: 0
+  max-width: 1300px
+  overflow: auto
+  max-height: 100vh
+  height: max-content
+  z-index: 3
+  top: 0
+  bottom: 0
+
+  &.itm_mdl
+    max-width: 400px
+
+  form, .form
+    display: flex
+    flex-wrap: wrap
+
+.modl_order-cls
+  display: block
+  text-align: right
+  width: 100%
+
+.modl_order-col
+  width: 100%
+  padding: 0 15px
+
+  &.first
+    display: flex
+    width: 605px
+    padding: 0 0
+    flex-wrap: wrap
+
+  &.second
+    width: 605px
+    padding: 0 15px
+
+.modl_order-col-cont
+  width: 302px
+  padding: 0 15px
+
+  &.second
+    width: 604px
+
+.modl_order-col-row
+  display: flex
+  font-size: 14px
+  padding: 13px 0
+
+  &.fdc
+    -webkit-flex-direction: column
+    -moz-flex-direction: column
+    -ms-flex-direction: column
+    -o-flex-direction: column
+    flex-direction: column
+
+.modl_order-col-name
+  width: 108px
+  font-weight: 700
+
+.modl_order-col-txt
+  width: 164px
+
+  input, textarea
+    width: 100%
+
+  input, select, textarea
+    width: 100%
+    padding: 6px 10px
+    border-radius: 4px
+    border: 1px solid #ececec
+
+.modl_order-col button
+  display: block
+  width: 200px
+  background: #0e4fdb
+  border: 0
+  border-radius: 25px
+  color: #fff
+  text-transform: uppercase
+  padding: 15px
+  margin: 0 auto
+  margin-bottom: 20px
+  cursor: pointer
+  overflow: hidden
+  position: relative
+  text-align: center
+
+.modl_order-col-cont.second .modl_order-col-txt
+  width: 460px
+
+.modl_order-scrlList
+  width: 100%
+  max-height: 300px
+  overflow: auto
+  margin-bottom: 20px
+
+.modl_order-scrlList-item
+  input
+    display: none
+
+  label
+    padding: 12px 25px
+    display: block
+    background: #f9f9f9
+    color: #808080
+    cursor: pointer
+
+  input:checked + label
+    background: #e4f4ff
+    color: #000
+
+.items-tbl-row
+  display: flex
+  font-size: 14px
+  border-bottom: 1px solid #ececec
+  padding: 12px 0px
+  flex-wrap: wrap
+
+.items-tbl
+  width: 100%
+
+.items-tbl-id
+  width: 64px
+  padding: 0 15px
+
+.items-tbl-name
+  padding: 0 15px
+  width: 180px
+
+.items-tbl-price
+  padding: 0 15px
+  width: 93px
+
+.items-tbl-count
+  padding: 0 15px
+  width: 110px
+
+.items-tbl-all
+  padding: 0 15px
+  width: 100px
+
+.like_a_text
+  width: 100%
+  border: 1px solid #fff
+
+  &:focus
+    border-color: #ececec
+
+.nova_decl, .nova_decl-delete
+  font-size: 11px
+  margin-top: 10px
+  color: #f00
+  display: inline-block
+
+.nova_decl-number
+  margin-top: 10px
+
+.add_item
+  display: inline-block
+  padding: 10px 0px
+  margin-top: 15px
+  text-decoration: none
+
+  &:before
+    content: '+'
+    display: inline-block
+    border: 1px solid
+    width: 16px
+    height: 16px
+    font-size: 17px
+    text-align: center
+    border-radius: 50%
+    margin-right: 8px
+    vertical-align: middle
+    line-height: 15px
+    padding-left: 1px
+    box-sizing: border-box
+
+.cls
+  color: #000
+  text-decoration: none
+  font-size: 20px
+
+/*
+
+.preloader
+  position: fixed
+  width: 100vw
+  height: 100vh
+  background: rgba(255, 255, 255, 0.88)
+  top: 0
+  left: 0
+  z-index: 999
+
+.container
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh
+  overflow: hidden

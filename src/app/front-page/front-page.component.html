@@ -1,0 +1,332 @@
+<div class="wrapper">
+  <div class="orders">
+    <div class="orders-side">
+      <div class="orders-side-logo">
+        Sam <span>CRM</span>
+      </div>
+      <div class="orders-side-menu">
+        <a [routerLink]="['/']" title="Заказы" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><img src="" alt="">Заказы</a>
+        <a [routerLink]="['/stock']" title="Склад" routerLinkActive="active"><img src="" alt="">Склад</a>
+        <button title="Выйти" (click)="logout()"><img src="" alt="">Выйти</button>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!--<div id="modl_order_add" class="modl_order">-->
+<!--  <div class="modl_order-overlay"></div>-->
+<!--  <div class="modl_order-cont">-->
+<!--    <a href="#" class="modl_order-cls cls">&times;</a>-->
+<!--    <form action="http://gagarin-web.com/mycrm/controller/modals/order_add.php" method="post" id="modl_order_add-form">-->
+<!--      <div class="modl_order-col first">-->
+<!--        <div class="modl_order-col-cont">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">id Заказа</div>-->
+<!--            <div class="modl_order-col-txt"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Статус</div>-->
+<!--            <div class="modl_order-col-txt">-->
+<!--              <select name="modl_order_add-stat" id="">-->
+<!--                <option value="new">Новый</option>-->
+<!--                <option value="ready">Нужно отправить</option>-->
+<!--                <option value="sent">Отправлено</option>-->
+<!--                <option value="done">Выполнено</option>-->
+<!--                <option value="break">Отказ</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">ФИО клиента</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-name"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Город</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-city"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Телефон</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-phone" class="phone"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modl_order-col-cont">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Оплата</div>-->
+<!--            <div class="modl_order-col-txt">-->
+<!--              <select name="modl_order_add-payment">-->
+<!--                <option value="наложенный платежь">наложенный платеж</option>-->
+<!--                <option value="наличными">наличными</option>-->
+<!--                <option value="оплата на карту">оплата на карту</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Доставка</div>-->
+<!--            <div class="modl_order-col-txt">-->
+<!--              <select name="modl_order_add-delivery">-->
+<!--                <option value="новая почта">новая почта</option>-->
+<!--                <option value="укрпочта">укрпочта</option>-->
+<!--                <option value="другая служба доставки">другая служба доставки</option>-->
+<!--                <option value="самовывоз Кривой Рог">самовывоз Кривой Рог</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modl_order-col-cont second">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Комментарий</div>-->
+<!--            <div class="modl_order-col-txt"><textarea name="modl_order_add-comment" id="" cols="30" rows="10"></textarea></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modl_order-col second">-->
+<!--        <div class="modl_order-col-row fdc">-->
+<!--          <input type="hidden" name="modl_order_add-product" >-->
+<!--          <div class="items-tbl">-->
+<!--            <div class="items-tbl-row head">-->
+<!--              <div class="items-tbl-id"><b>id</b></div>-->
+<!--              <div class="items-tbl-name"><b>Товар</b></div>-->
+<!--              <div class="items-tbl-price"><b>Цена</b></div>-->
+<!--              <div class="items-tbl-count"><b>Количество</b></div>-->
+<!--              <div class="items-tbl-all"><b>Итого</b></div>-->
+<!--              <div class="items-tbl-del"><b></b></div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <a href="#" id="createToOrder" class="add_item">Добавить товар</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modl_order-col">-->
+<!--        <button type="submit">Сохранить</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div id="modl_order_edit" class="modl_order">-->
+<!--  <div class="modl_order-overlay"></div>-->
+<!--  <div class="modl_order-cont">-->
+<!--    <a href="#" class="modl_order-cls cls">&times;</a>-->
+<!--    <form action="http://gagarin-web.com/mycrm/controller/modals/order_edit.php" method="post" id="modl_order_edit-form">-->
+<!--      <div class="modl_order-col first">-->
+<!--        <div class="modl_order-col-cont">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">id Заказа</div>-->
+<!--            <div class="modl_order-col-txt" style="display:none"><span id="ordid"></span></div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" id="datecreated" data-timepicker="true"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Статус</div>-->
+<!--            <div class="modl_order-col-txt">-->
+<!--              <select name="modl_order_edit-stat" id="">-->
+<!--                <option value="new">Новый</option>-->
+<!--                <option value="ready">Нужно отправить</option>-->
+<!--                <option value="sent">Отправлено</option>-->
+<!--                <option value="done">Выполнено</option>-->
+<!--                <option value="break">Отказ</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">ФИО клиента</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_order_edit-name"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Город</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_order_edit-city"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Телефон</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_order_edit-phone" class="phone"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modl_order-col-cont">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Оплата</div>-->
+<!--            <div class="modl_order-col-txt">-->
+<!--              <select name="modl_order_edit-payment">-->
+<!--                <option value="наложенный платежь">наложенный платеж</option>-->
+<!--                <option value="наличными">наличными</option>-->
+<!--                <option value="оплата на карту">оплата на карту</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Доставка</div>-->
+<!--            <div class="modl_order-col-txt">-->
+<!--              <select name="modl_order_edit-delivery">-->
+<!--                <option value="новая почта">новая почта</option>-->
+<!--                <option value="укрпочта">укрпочта</option>-->
+<!--                <option value="другая служба доставки">другая служба доставки</option>-->
+<!--                <option value="самовывоз Кривой Рог">самовывоз Кривой Рог</option>-->
+<!--              </select>-->
+<!--              <div class="nova_decl-wp">-->
+<!--                <a href="#" class="nova_decl">Создать декларацию</a>-->
+<!--                <input type="hidden" name="nova_decl-code" class="nova_decl-code">-->
+<!--                <input type="hidden" name="nova_decl-date" class="nova_decl-date">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modl_order-col-cont second">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Комментарий</div>-->
+<!--            <div class="modl_order-col-txt"><textarea name="modl_order_edit-comment" id="" cols="30" rows="10"></textarea></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modl_order-col second">-->
+<!--        <div class="modl_order-col-row fdc">-->
+<!--          <input type="hidden" name="modl_order_edit-product" >-->
+<!--          <div class="items-tbl">-->
+<!--            <div class="items-tbl-row head">-->
+<!--              <div class="items-tbl-id"><b>id</b></div>-->
+<!--              <div class="items-tbl-name"><b>Товар</b></div>-->
+<!--              <div class="items-tbl-price"><b>Цена</b></div>-->
+<!--              <div class="items-tbl-count"><b>Количество</b></div>-->
+<!--              <div class="items-tbl-all"><b>Итого</b></div>-->
+<!--              <div class="items-tbl-del"><b></b></div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <a href="#" id="editToOrder" class="add_item">Добавить товар</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modl_order-col">-->
+<!--        <button type="submit">Сохранить</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div id="add_order_item" class="modl_order">-->
+<!--  <div class="modl_order-overlay"></div>-->
+<!--  <div class="modl_order-cont itm_mdl">-->
+<!--    <a href="#" class="modl_order-cls cls">&times;</a>-->
+<!--    <div class="form">-->
+<!--      <div class="modl_order-col first">-->
+<!--        <div class="modl_order-scrlList"></div>-->
+<!--      </div>-->
+<!--      <div class="modl_order-col">-->
+<!--        <button id="add_order_item_choose" type="submit">Выбрать</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div id="modl_nova_decl" class="modl_order">-->
+<!--  <div class="modl_order-overlay"></div>-->
+<!--  <div class="modl_order-cont">-->
+<!--    <a href="#" class="modl_order-cls cls">&times;</a>-->
+<!--    <form action="http://gagarin-web.com/mycrm/controller/modals/nova_decl.php" method="post" id="modl_nova_decl-form">-->
+<!--      <div class="modl_order-col first">-->
+<!--        <div class="modl_order-col-cont">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Доставка</div>-->
+<!--            <div class="modl_order-col-txt">-->
+<!--              <select name="modl_nova_decl-dost" disabled>-->
+<!--                <option value="Отделение-отделение">Отделение-отделение</option>-->
+<!--                <option value="Отделение-адрес">Отделение-адрес</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Контрагент отправителя</div>-->
+<!--            <div class="modl_order-col-txt"><select type="text" name="modl_nova_decl-send_contr_front" ></select><input type="hidden" name="modl_nova_decl-send_contr"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Контактное лицо отправителя</div>-->
+<!--            <div class="modl_order-col-txt"><select type="text" name="modl_nova_decl-send_cont_front" ></select><input type="hidden" name="modl_nova_decl-cont_contr"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Населенный пункт отправки</div>-->
+<!--            <div class="modl_order-col-txt"><select type="text" name="modl_nova_decl-send_city_front" ></select><input type="hidden" name="modl_nova_decl-send_city"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Адрес или отделение отправки</div>-->
+<!--            <div class="modl_order-col-txt"><select type="text" name="modl_nova_decl-send_adr_front" ></select><input type="hidden" name="modl_nova_decl-send_adr"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Дата отправки</div>-->
+<!--            <div class="modl_order-col-txt"><input id="datePick" type="text" name="modl_nova_decl-date" autocomplete="off" required></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modl_order-col-cont">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Контрагент получателя</div>-->
+<!--            <div class="modl_order-col-txt"><select type="text" name="modl_nova_decl-rec_contr_front" ></select><input type="hidden" name="modl_nova_decl-rec_contr"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Контактное лицо</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_nova_decl-rec_cont" disabled></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Телефон контактного лица</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_nova_decl-rec_phn" disabled></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Населенный пункт получателя</div>-->
+<!--            <div class="modl_order-col-txt"><select type="text" name="modl_nova_decl-rec_city_front" ></select><input type="hidden" name="modl_nova_decl-rec_city"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Адрес или отделение получателя</div>-->
+<!--            <div class="modl_order-col-txt"><select type="text" name="modl_nova_decl-rec_adr_front"></select><input type="hidden" name="modl_nova_decl-rec_adr"></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modl_order-col first">-->
+<!--        <div class="modl_order-col-cont">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Тип доставки</div>-->
+<!--            <div class="modl_order-col-txt">-->
+<!--              <select name="modl_nova_decl-type" disabled>-->
+<!--                <option value="Parcel" selected>Посылка</option>-->
+<!--                <option value="Cargo">Груз</option>-->
+<!--                <option value="Documents">Документы</option>-->
+<!--                <option value="TiresWheels">Шины-диски</option>-->
+<!--                <option value="Pallet">Палеты</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Ширина(см)</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" class="calc" id="nova_wdth"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Высота(см)</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" class="calc" id="nova_hght"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Длина(см)</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" class="calc" id="nova_lngth"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Вес фактический(кг)</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" id="nova_wgth" required></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modl_order-col-cont">-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Объем(м<sup>3</sup>)</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_nova_decl-vol" id="nova_vol" disabled></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Вес объемный(кг)</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_nova_decl-volWght" id="nova_volWght" disabled></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row">-->
+<!--            <div class="modl_order-col-name">Обратная доставка</div>-->
+<!--            <div class="modl_order-col-txt"><input type="checkbox" name="modl_nova_decl-backdel"></div>-->
+<!--          </div>-->
+<!--          <div class="modl_order-col-row ifBackDel">-->
+<!--            <div class="modl_order-col-name">Сумма доставки</div>-->
+<!--            <div class="modl_order-col-txt"><input type="text" name="modl_nova_decl-backcard" disabled></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="modl_order-col">-->
+<!--        <input type="hidden" name="modl_nova_decl-descr" id="nova_descr" >-->
+<!--        <input type="hidden" name="modl_nova_decl-cost" id="nova_cost" >-->
+<!--        <button type="submit">Сохранить</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->

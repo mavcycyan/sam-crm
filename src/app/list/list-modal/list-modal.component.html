@@ -1,0 +1,88 @@
+<div id="modl_order_add" class="modl_order">
+  <div class="modl_order-overlay" (click)="close.emit()"></div>
+  <div class="modl_order-cont">
+    <a href="#" class="modl_order-cls cls" (click)="close.emit()">&times;</a>
+    <form action="http://gagarin-web.com/mycrm/controller/modals/order_add.php" method="post" id="modl_order_add-form">
+      <div class="modl_order-col first">
+        <div class="modl_order-col-cont">
+          <div class="modl_order-col-row">
+            <div class="modl_order-col-name">id Заказа</div>
+            <div class="modl_order-col-txt"></div>
+          </div>
+          <div class="modl_order-col-row">
+            <div class="modl_order-col-name">Статус</div>
+            <div class="modl_order-col-txt">
+              <select name="modl_order_add-stat" id="">
+                <option value="new">Новый</option>
+                <option value="ready">Нужно отправить</option>
+                <option value="sent">Отправлено</option>
+                <option value="done">Выполнено</option>
+                <option value="break">Отказ</option>
+              </select>
+            </div>
+          </div>
+          <div class="modl_order-col-row">
+            <div class="modl_order-col-name">ФИО клиента</div>
+            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-name"></div>
+          </div>
+          <div class="modl_order-col-row">
+            <div class="modl_order-col-name">Город</div>
+            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-city"></div>
+          </div>
+          <div class="modl_order-col-row">
+            <div class="modl_order-col-name">Телефон</div>
+            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-phone" class="phone"></div>
+          </div>
+        </div>
+        <div class="modl_order-col-cont">
+          <div class="modl_order-col-row">
+            <div class="modl_order-col-name">Оплата</div>
+            <div class="modl_order-col-txt">
+              <select name="modl_order_add-payment">
+                <option value="наложенный платежь">наложенный платеж</option>
+                <option value="наличными">наличными</option>
+                <option value="оплата на карту">оплата на карту</option>
+              </select>
+            </div>
+          </div>
+          <div class="modl_order-col-row">
+            <div class="modl_order-col-name">Доставка</div>
+            <div class="modl_order-col-txt">
+              <select name="modl_order_add-delivery">
+                <option value="новая почта">новая почта</option>
+                <option value="укрпочта">укрпочта</option>
+                <option value="другая служба доставки">другая служба доставки</option>
+                <option value="самовывоз Кривой Рог">самовывоз Кривой Рог</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modl_order-col-cont second">
+          <div class="modl_order-col-row">
+            <div class="modl_order-col-name">Комментарий</div>
+            <div class="modl_order-col-txt"><textarea name="modl_order_add-comment" id="" cols="30" rows="10"></textarea></div>
+          </div>
+        </div>
+      </div>
+      <div class="modl_order-col second">
+        <div class="modl_order-col-row fdc">
+          <input type="hidden" name="modl_order_add-product" >
+          <div class="items-tbl">
+            <div class="items-tbl-row head">
+              <div class="items-tbl-id"><b>id</b></div>
+              <div class="items-tbl-name"><b>Товар</b></div>
+              <div class="items-tbl-price"><b>Цена</b></div>
+              <div class="items-tbl-count"><b>Количество</b></div>
+              <div class="items-tbl-all"><b>Итого</b></div>
+              <div class="items-tbl-del"><b></b></div>
+            </div>
+          </div>
+          <a href="#" id="createToOrder" class="add_item">Добавить товар</a>
+        </div>
+      </div>
+      <div class="modl_order-col">
+        <button type="submit">Сохранить</button>
+      </div>
+    </form>
+  </div>
+</div>
