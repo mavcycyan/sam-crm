@@ -2,80 +2,41 @@
   <h1 class="orders-ttl">Заявки с сайта</h1>
   <div class="orders-top">
     <div class="orders-user">Пользователь: Admin</div>
-    <div class="orders-add"><button (click)="modal = true">Добавить заказ</button></div>
+    <div class="orders-add"><button (click)="showModal()">Добавить заказ</button></div>
   </div>
   <div class="orders-tbl">
     <div class="orders-tbl-row head">
-      <div class="orders-tbl-id"><b>Дата</b></div>
-      <div class="orders-tbl-name"><b>Имя клиента</b></div>
-      <div class="orders-tbl-phone"><b>Телефон</b></div>
-      <div class="orders-tbl-prod"><b>Товар</b></div>
-      <div class="orders-tbl-npNum"><b>№ Накладной</b></div>
-      <div class="orders-tbl-stat"><b>Статус</b></div>
+      <div class="orders-tbl-id"><b>Date</b></div>
+      <div class="orders-tbl-name"><b>Client name</b></div>
+      <div class="orders-tbl-phone"><b>Phone</b></div>
+      <div class="orders-tbl-prod"><b>Product</b></div>
+      <div class="orders-tbl-stat"><b>Status</b></div>
     </div>
-
-    <div class="orders-tbl-row" style="background:#0e4fdb; color: #fff"><b class="orders-tbl-id">09.12.2020</b></div>
-    <div class="orders-tbl-row" data-id="948" (click)="modal = true">
-      <div class="orders-tbl-id">09.12.2020</div>
-      <div class="orders-tbl-name">Коренчук Марія</div>
-      <div class="orders-tbl-phone">380990360492</div>
-      <div class="orders-tbl-prod">Камуфляжная</div>
-      <div class="orders-tbl-npNum"></div>
-      <div class="orders-tbl-stat">
-        <span class="new">Новый</span>
+    <div *ngFor="let order of listOrders; index as i">
+      <div *ngIf="order.isSeparator; else rowOrder;">
+        <div class="orders-tbl-row" style="background:#0e4fdb; color: #fff"><b class="orders-tbl-id">{{order.date | date:'dd.MM.yyyy'}}</b></div>
       </div>
-      <div class="orders-tbl-delete">&times;</div>
-    </div>
-
-    <div class="orders-tbl-row" style="background:#0e4fdb; color: #fff"><b class="orders-tbl-id">02.12.2020</b></div>
-    <div class="orders-tbl-row" data-id="947" (click)="modal = true">
-      <div class="orders-tbl-id">02.12.2020</div>
-      <div class="orders-tbl-name">Корсюк Богдан</div>
-      <div class="orders-tbl-phone">380964137037</div>
-      <div class="orders-tbl-prod">Черная классическая</div>
-      <div class="orders-tbl-npNum"></div>
-      <div class="orders-tbl-stat">
-        <span class="new">Новый</span>
-      </div>
-      <div class="orders-tbl-delete">&times;</div>
-    </div>
-    <div class="orders-tbl-row" data-id="876" (click)="modal = true">
-      <div class="orders-tbl-id">07.03.2020</div>
-      <div class="orders-tbl-name">Малько Елена</div>
-      <div class="orders-tbl-phone">380674978887</div>
-      <div class="orders-tbl-prod">Единорог 1</div>
-      <div class="orders-tbl-npNum">20450212628055</div>
-      <div class="orders-tbl-stat">
-        <span class="done">Выполнено</span>
-      </div>
-      <div class="orders-tbl-delete">×</div>
-    </div>
-    <div class="orders-tbl-row" data-id="857" (click)="modal = true">
-      <div class="orders-tbl-id">05.03.2020</div>
-      <div class="orders-tbl-name">Татьяна Швыгарь</div>
-      <div class="orders-tbl-phone">380660444273</div>
-      <div class="orders-tbl-prod">Фламинго</div>
-      <div class="orders-tbl-npNum">20450212105678</div>
-      <div class="orders-tbl-stat">
-        <span class="ready">Нужно отправить</span>
-      </div>
-      <div class="orders-tbl-delete">×</div>
-    </div>
-    <div class="orders-tbl-row" data-id="871" (click)="modal = true">
-      <div class="orders-tbl-id">05.03.2020</div>
-      <div class="orders-tbl-name">Наталья Сидун</div>
-      <div class="orders-tbl-phone">380973828182</div>
-      <div class="orders-tbl-prod">Фламинго</div>
-      <div class="orders-tbl-npNum">20450211958259</div>
-      <div class="orders-tbl-stat">
-        <span class="break">Отказ</span>
-      </div>
-      <div class="orders-tbl-delete">×</div>
+      <ng-template #rowOrder>
+        <div class="orders-tbl-row_wrap">
+          <div class="orders-tbl-row" (click)="showModal(order._id)">
+            <div class="orders-tbl-id">{{order.date | date:'dd.MM.yyyy'}}</div>
+            <div class="orders-tbl-name">{{order.client_name}}</div>
+            <div class="orders-tbl-phone">{{order.client_phone}}</div>
+            <div class="orders-tbl-prod">
+              <span *ngFor="let item of order.items; last as isLast">{{item.name}}<span *ngIf="!isLast">, </span></span>
+            </div>
+            <div class="orders-tbl-stat">
+              <span class="{{order.status}}">{{statusName[order.status]}}</span>
+            </div>
+          </div>
+          <div class="orders-tbl-delete" (click)="deleteOrder(order._id)">&times;</div>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
 
-<app-list-modal
-  *ngIf="modal"
-  (close)="modal = false"
-></app-list-modal>
+<ng-template
+        appModal
+        onListChange="onListChange($event)"
+></ng-template>

@@ -12,7 +12,7 @@ import {AuthPageComponent} from './auth-page/auth-page.component';
 const appRoutes: Routes = [
   {path: '', component: FrontPageComponent, canActivate: [AuthGuardService], children: [
       {path: '', component: ListComponent},
-      {path: 'stock', component: StockComponent},
+      {path: 'items', component: StockComponent},
   ]},
   {path: '', component: AuthPageComponent, children: [
       {path: 'login', component: LoginComponent}

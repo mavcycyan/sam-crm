@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serverName: 'http://localhost:3500/api/orders/'
 };

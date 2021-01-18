@@ -5,9 +5,9 @@
         Sam <span>CRM</span>
       </div>
       <div class="orders-side-menu">
-        <a [routerLink]="['/']" title="Заказы" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><img src="" alt="">Заказы</a>
-        <a [routerLink]="['/stock']" title="Склад" routerLinkActive="active"><img src="" alt="">Склад</a>
-        <button title="Выйти" (click)="logout()"><img src="" alt="">Выйти</button>
+        <a [routerLink]="['/']" title="Заказы" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fas fa-clipboard-list"></i>Orders</a>
+        <a [routerLink]="['/items']" title="Склад" routerLinkActive="active"><i class="fas fa-boxes"></i>Items</a>
+        <button title="Выйти" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Logout</button>
       </div>
     </div>
     <router-outlet></router-outlet>

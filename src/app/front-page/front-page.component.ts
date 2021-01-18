@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./front-page.component.sass']
 })
 export class FrontPageComponent implements OnInit {
+
 
   constructor(private authService: AuthService, private router: Router) { }
 

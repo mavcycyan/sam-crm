@@ -2,65 +2,72 @@
   <div class="modl_order-overlay" (click)="close.emit()"></div>
   <div class="modl_order-cont">
     <a href="#" class="modl_order-cls cls" (click)="close.emit()">&times;</a>
-    <form action="http://gagarin-web.com/mycrm/controller/modals/order_add.php" method="post" id="modl_order_add-form">
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+      <input type="hidden" formControlName="orderModlId">
       <div class="modl_order-col first">
         <div class="modl_order-col-cont">
-          <div class="modl_order-col-row">
-            <div class="modl_order-col-name">id Заказа</div>
-            <div class="modl_order-col-txt"></div>
+          <div
+              *ngIf="isEdit"
+              class="modl_order-col-row"
+          >
+            <div class="modl_order-col-name">Date</div>
+            <div class="modl_order-col-txt">{{orderDate | date:'dd.MM.yyyy'}}</div>
           </div>
-          <div class="modl_order-col-row">
-            <div class="modl_order-col-name">Статус</div>
+          <div
+              *ngIf="isEdit"
+              class="modl_order-col-row"
+          >
+            <div class="modl_order-col-name">Status</div>
             <div class="modl_order-col-txt">
-              <select name="modl_order_add-stat" id="">
-                <option value="new">Новый</option>
-                <option value="ready">Нужно отправить</option>
-                <option value="sent">Отправлено</option>
-                <option value="done">Выполнено</option>
-                <option value="break">Отказ</option>
+              <select name="modl_order_add-stat" formControlName="orderStatus">
+                <option value="new">New</option>
+                <option value="ready">Ready</option>
+                <option value="sent">Sent</option>
+                <option value="done">Done</option>
+                <option value="break">Refusal</option>
               </select>
             </div>
           </div>
           <div class="modl_order-col-row">
-            <div class="modl_order-col-name">ФИО клиента</div>
-            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-name"></div>
+            <div class="modl_order-col-name">Client full name</div>
+            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-name" formControlName="orderName" ></div>
           </div>
           <div class="modl_order-col-row">
-            <div class="modl_order-col-name">Город</div>
-            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-city"></div>
+            <div class="modl_order-col-name">Client city</div>
+            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-city"  formControlName="orderCity"></div>
           </div>
           <div class="modl_order-col-row">
-            <div class="modl_order-col-name">Телефон</div>
-            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-phone" class="phone"></div>
+            <div class="modl_order-col-name">Client phone</div>
+            <div class="modl_order-col-txt"><input type="text" name="modl_order_add-phone" class="phone" formControlName="orderPhone"></div>
           </div>
         </div>
         <div class="modl_order-col-cont">
           <div class="modl_order-col-row">
-            <div class="modl_order-col-name">Оплата</div>
+            <div class="modl_order-col-name">Pay type</div>
             <div class="modl_order-col-txt">
-              <select name="modl_order_add-payment">
-                <option value="наложенный платежь">наложенный платеж</option>
-                <option value="наличными">наличными</option>
-                <option value="оплата на карту">оплата на карту</option>
+              <select name="modl_order_add-payment" formControlName="orderPay">
+                <option value="cod">C.O.D</option>
+                <option value="cash">Cash</option>
+                <option value="card">Card payment</option>
               </select>
             </div>
           </div>
           <div class="modl_order-col-row">
-            <div class="modl_order-col-name">Доставка</div>
+            <div class="modl_order-col-name">Delivery type</div>
             <div class="modl_order-col-txt">
-              <select name="modl_order_add-delivery">
-                <option value="новая почта">новая почта</option>
-                <option value="укрпочта">укрпочта</option>
-                <option value="другая служба доставки">другая служба доставки</option>
-                <option value="самовывоз Кривой Рог">самовывоз Кривой Рог</option>
+              <select name="modl_order_add-delivery" formControlName="orderDelivery">
+                <option value="np">NovaPoshta</option>
+                <option value="ukrposhta">UkrPoshta</option>
+                <option value="express">Express delivery</option>
+                <option value="pickup">Pickup</option>
               </select>
             </div>
           </div>
         </div>
         <div class="modl_order-col-cont second">
           <div class="modl_order-col-row">
-            <div class="modl_order-col-name">Комментарий</div>
-            <div class="modl_order-col-txt"><textarea name="modl_order_add-comment" id="" cols="30" rows="10"></textarea></div>
+            <div class="modl_order-col-name">Comment</div>
+            <div class="modl_order-col-txt"><textarea name="modl_order_add-comment" id="" cols="30" rows="10" formControlName="orderComment"></textarea></div>
           </div>
         </div>
       </div>
@@ -69,19 +76,27 @@
           <input type="hidden" name="modl_order_add-product" >
           <div class="items-tbl">
             <div class="items-tbl-row head">
-              <div class="items-tbl-id"><b>id</b></div>
-              <div class="items-tbl-name"><b>Товар</b></div>
-              <div class="items-tbl-price"><b>Цена</b></div>
-              <div class="items-tbl-count"><b>Количество</b></div>
-              <div class="items-tbl-all"><b>Итого</b></div>
+              <div class="items-tbl-id"><b>SKU</b></div>
+              <div class="items-tbl-name"><b>Item</b></div>
+              <div class="items-tbl-price"><b>Price</b></div>
+              <div class="items-tbl-count"><b>Quantity</b></div>
+              <div class="items-tbl-all"><b>Total</b></div>
+              <div class="items-tbl-del"><b></b></div>
+            </div>
+            <div class="items-tbl-row" *ngFor="let item of itemsRelated">
+              <div class="items-tbl-id"><b>{{item.sku}}</b></div>
+              <div class="items-tbl-name"><b>{{item.name}}</b></div>
+              <div class="items-tbl-price"><b>{{item.cost}}</b></div>
+              <div class="items-tbl-count"><b>{{item.count}}</b></div>
+              <div class="items-tbl-all"><b>{{item.cost * item.count}}</b></div>
               <div class="items-tbl-del"><b></b></div>
             </div>
           </div>
-          <a href="#" id="createToOrder" class="add_item">Добавить товар</a>
+          <a href="#" class="add_item">Add item</a>
         </div>
       </div>
       <div class="modl_order-col">
-        <button type="submit">Сохранить</button>
+        <button type="submit">Save</button>
       </div>
     </form>
   </div>
