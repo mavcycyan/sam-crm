@@ -14,17 +14,21 @@ import {AuthPageComponent} from './auth-page/auth-page.component';
 import {ListModalComponent} from './list/list-modal/list-modal.component';
 import {ModalDirective} from './list/modal.directive';
 import {ReactiveFormsModule} from '@angular/forms';
+import {StockModalComponent} from './stock/stock-modal/stock-modal.component';
+import {ModalStockDirective} from './stock/modal-stock.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     StockComponent,
+    StockModalComponent,
     LoginComponent,
     FrontPageComponent,
     AuthPageComponent,
     ListModalComponent,
-    ModalDirective
+    ModalDirective,
+    ModalStockDirective
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     AuthService,
     AuthGuardService
   ],
-  entryComponents: [ListModalComponent],
+  entryComponents: [ListModalComponent, StockModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

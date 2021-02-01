@@ -20,3 +20,12 @@ export interface OrderSingleData {
     client_delivery: string;
     client_comment: string;
 }
+
+export interface StockList {
+    _id?: string;
+    sys_name: string;
+    name: string;
+    price: string;
+    stock_count: string;
+    sku: string;
+}

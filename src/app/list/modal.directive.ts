@@ -4,7 +4,7 @@ import {Directive, ViewContainerRef} from '@angular/core';
     selector: '[appModal]'
 })
 export class ModalDirective {
-    constructor(public containerModal: ViewContainerRef ) {
+    constructor(public viewContainerRef: ViewContainerRef ) {
 
     }
 }

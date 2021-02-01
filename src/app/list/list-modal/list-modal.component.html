@@ -7,15 +7,15 @@
       <div class="modl_order-col first">
         <div class="modl_order-col-cont">
           <div
-              *ngIf="isEdit"
-              class="modl_order-col-row"
+                  *ngIf="isEdit"
+                  class="modl_order-col-row"
           >
-            <div class="modl_order-col-name">Date</div>
+            <div class="modl_order-col-name">SKU</div>
             <div class="modl_order-col-txt">{{orderDate | date:'dd.MM.yyyy'}}</div>
           </div>
           <div
-              *ngIf="isEdit"
-              class="modl_order-col-row"
+                  *ngIf="isEdit"
+                  class="modl_order-col-row"
           >
             <div class="modl_order-col-name">Status</div>
             <div class="modl_order-col-txt">
@@ -101,3 +101,4 @@
     </form>
   </div>
 </div>
+

@@ -1,0 +1,36 @@
+<div id="modl_item_add" class="modl_order">
+    <div class="modl_order-overlay" (click)="close.emit()"></div>
+    <div class="modl_order-cont">
+        <a class="modl_order-cls cls" (click)="close.emit()">&times;</a>
+        <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+            <input type="hidden" formControlName="itemModlId">
+            <div class="modl_order-col first">
+                <div class="modl_order-col-cont">
+                    <div class="modl_order-col-row">
+                        <div class="modl_order-col-name">SKU</div>
+                        <div class="modl_order-col-txt"><input type="text" name="modl_order_add-name" formControlName="itemSku" ></div>
+                    </div>
+                    <div class="modl_order-col-row">
+                        <div class="modl_order-col-name">Item name</div>
+                        <div class="modl_order-col-txt"><input type="text" name="modl_order_add-name" formControlName="itemName" ></div>
+                    </div>
+                    <div class="modl_order-col-row">
+                        <div class="modl_order-col-name">Alias</div>
+                        <div class="modl_order-col-txt"><input type="text" name="modl_order_add-city"  formControlName="itemAlias"></div>
+                    </div>
+                    <div class="modl_order-col-row">
+                        <div class="modl_order-col-name">Price</div>
+                        <div class="modl_order-col-txt"><input type="text" name="modl_order_add-phone" class="phone" formControlName="itemPrice"></div>
+                    </div>
+                    <div class="modl_order-col-row">
+                        <div class="modl_order-col-name">Quantity</div>
+                        <div class="modl_order-col-txt"><input type="text" name="modl_order_add-phone" class="phone" formControlName="itemQuan"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modl_order-col">
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

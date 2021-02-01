@@ -22,12 +22,12 @@ export class ListModalComponent implements OnInit, OnChanges {
 
   @Input() orderId = null;
   @Input() isEdit = false;
-  @Output() close = new EventEmitter<void>();
-  @Output() onListChange = new EventEmitter<void>();
+  @Output() close: EventEmitter<any> = new EventEmitter<void>();
+  @Output() onListChange: EventEmitter<any> = new EventEmitter<void>();
 
   postData(params) {
       console.log(params);
-      this.httpClient.post<any>(environment.serverName, {
+      this.httpClient.post<any>(environment.serverName + 'api/orders/', {
           items : [
               {
                   id: '5feb9993c923a51d743e5e65',
@@ -53,7 +53,7 @@ export class ListModalComponent implements OnInit, OnChanges {
   }
 
   patchData(params) {
-      this.httpClient.patch<any>(environment.serverName + params.orderModlId.value, {
+      this.httpClient.patch<any>(environment.serverName + 'api/orders/' + params.orderModlId.value, {
           items : [
               {
                   id: '5feb9993c923a51d743e5e65',
@@ -86,7 +86,7 @@ export class ListModalComponent implements OnInit, OnChanges {
       this.form = new FormGroup({
           orderModlId: new FormControl(''),
           orderName: new FormControl('', Validators.required),
-          orderStatus: new FormControl('', Validators.required),
+          orderStatus: new FormControl(''),
           orderCity: new FormControl('', Validators.required),
           orderPhone: new FormControl('', Validators.required),
           orderPay: new FormControl('', Validators.required),
@@ -95,7 +95,7 @@ export class ListModalComponent implements OnInit, OnChanges {
       });
 
       if (this.orderId && this.orderId !== null) {
-          this.httpClient.get<OrderSingleData>(environment.serverName + this.orderId, {observe: 'response'} )
+          this.httpClient.get<OrderSingleData>(environment.serverName + 'api/orders/' + this.orderId, {observe: 'response'} )
               .subscribe( order => {
                   if (order.body != null) {
                       this.form.setValue({
@@ -117,7 +117,6 @@ export class ListModalComponent implements OnInit, OnChanges {
   }
 
   submit() {
-      console.log('Form submited: ', this.form);
       if (this.form.status !== 'INVALID') {
           if (this.form.controls.orderModlId.value !== '' && this.form.controls.orderModlId.value !== null) {
               this.patchData(this.form.controls);

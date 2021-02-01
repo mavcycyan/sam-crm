@@ -2,7 +2,7 @@
   <h1 class="orders-ttl">Заявки с сайта</h1>
   <div class="orders-top">
     <div class="orders-user">Пользователь: Admin</div>
-    <div class="orders-add"><button>Добавить товар</button></div>
+    <div class="orders-add"><button (click)="showModal()">Добавить товар</button></div>
   </div>
   <div class="stock-tbl">
     <div class="stock-tbl-row head">
@@ -14,14 +14,19 @@
     </div>
 
     <div *ngFor="let item of stockList">
-      <div class="stock-tbl-row" data-id="{{item._id}}">
-        <div class="stock-tbl-id">{{item.sku}}</div>
-        <div class="stock-tbl-name">{{item.name}}</div>
-        <div class="stock-tbl-code">{{item.sys_name}}</div>
-        <div class="stock-tbl-price"><span>{{item.price}}</span> UAH</div>
-        <div class="stock-tbl-count"><span>{{item.stock_count}}</span></div>
+      <div class="orders-tbl-row_wrap">
+        <div class="stock-tbl-row" data-id="{{item._id}}" (click)="showModal(item._id)">
+          <div class="stock-tbl-id">{{item.sku}}</div>
+          <div class="stock-tbl-name">{{item.name}}</div>
+          <div class="stock-tbl-code">{{item.sys_name}}</div>
+          <div class="stock-tbl-price"><span>{{item.price}}</span> UAH</div>
+          <div class="stock-tbl-count"><span>{{item.stock_count}}</span></div>
+        </div>
+        <div class="orders-tbl-delete" (click)="deleteItem(item._id)">&times;</div>
       </div>
     </div>
 
   </div>
 </div>
+
+<ng-template appModalStock></ng-template>

@@ -25,24 +25,28 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   constructor(private httpClient: HttpClient,
-              private resolver: ComponentFactoryResolver) {
+              private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
   showModal(id = null) {
-    const modalFactory = this.resolver.resolveComponentFactory(ListModalComponent);
-    this.modalDir.containerModal.clear();
+    const component = ListModalComponent;
 
-    const component = this.modalDir.containerModal.createComponent(modalFactory);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+
+    const viewContainerRef = this.modalDir.viewContainerRef;
+    viewContainerRef.clear();
+
+    const componentRef = viewContainerRef.createComponent(componentFactory);
 
     if (id !== null) {
-        component.instance.isEdit = true;
+        componentRef.instance.isEdit = true;
     }
 
-    component.instance.orderId = id;
-    component.instance.close.subscribe(() => {
-       this.modalDir.containerModal.clear();
+    componentRef.instance.orderId = id;
+    componentRef.instance.close.subscribe(() => {
+       this.modalDir.viewContainerRef.clear();
     });
-    component.instance.onListChange.subscribe(() => {
+    componentRef.instance.onListChange.subscribe(() => {
        this.onListChange();
     });
   }
@@ -57,7 +61,7 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   onListChange() {
-      this.httpClient.get<OrdersData[]>(environment.serverName)
+      this.httpClient.get<OrdersData[]>(environment.serverName + 'api/orders/')
           .subscribe(orders => {
               const newOrders = [];
               let newOrdersItt = 0;
@@ -77,7 +81,7 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   deleteOrder(id) {
-      this.httpClient.delete<any>(environment.serverName + id)
+      this.httpClient.delete<any>(environment.serverName + 'api/orders/' + id)
           .subscribe(response => {
               alert(response.message);
               this.ngOnChanges();
