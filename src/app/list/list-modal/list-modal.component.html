@@ -1,7 +1,7 @@
-<div id="modl_order_add" class="modl_order">
+<div class="modl_order">
   <div class="modl_order-overlay" (click)="close.emit()"></div>
   <div class="modl_order-cont">
-    <a href="#" class="modl_order-cls cls" (click)="close.emit()">&times;</a>
+    <button type="button" class="modl_order-cls cls" (click)="close.emit()">&times;</button>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()">
       <input type="hidden" formControlName="orderModlId">
       <div class="modl_order-col first">
@@ -10,7 +10,7 @@
                   *ngIf="isEdit"
                   class="modl_order-col-row"
           >
-            <div class="modl_order-col-name">SKU</div>
+            <div class="modl_order-col-name">Date</div>
             <div class="modl_order-col-txt">{{orderDate | date:'dd.MM.yyyy'}}</div>
           </div>
           <div
@@ -73,7 +73,6 @@
       </div>
       <div class="modl_order-col second">
         <div class="modl_order-col-row fdc">
-          <input type="hidden" name="modl_order_add-product" >
           <div class="items-tbl">
             <div class="items-tbl-row head">
               <div class="items-tbl-id"><b>SKU</b></div>
@@ -92,7 +91,7 @@
               <div class="items-tbl-del"><b></b></div>
             </div>
           </div>
-          <a href="#" class="add_item">Add item</a>
+          <a (click)="addItem(orderId)" class="add_item">Add item</a>
         </div>
       </div>
       <div class="modl_order-col">

@@ -1,20 +1,24 @@
-import {Component, ComponentFactoryResolver, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnChanges, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ListModalComponent} from './list-modal/list-modal.component';
 import {ModalDirective} from './modal.directive';
 import {OrdersData} from '../interfaces';
 import {environment} from '../../environments/environment';
+import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs/index';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.sass']
 })
-export class ListComponent implements OnInit, OnChanges {
+export class ListComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild(ModalDirective, {static: false}) modalDir: ModalDirective;
 
-  listOrders: OrdersData[] = []
+  listOrders: OrdersData[] = [];
+
+  listLimit = 5;
 
   statusName = {
     new: 'New',
@@ -22,10 +26,19 @@ export class ListComponent implements OnInit, OnChanges {
     sent: 'Sent',
     done: 'Done',
     break: 'Refusal',
-  }
+  };
+
+  routeSub: Subscription;
+
+  pageNum = 0;
+  pagination: Array<number> = [];
 
   constructor(private httpClient: HttpClient,
-              private componentFactoryResolver: ComponentFactoryResolver) {
+              private componentFactoryResolver: ComponentFactoryResolver,
+              private route: ActivatedRoute) {
+      this.routeSub = this.route.params.subscribe(params => {
+          this.pageNum = (params.page) ? params.page : 0;
+      });
   }
 
   showModal(id = null) {
@@ -60,8 +73,20 @@ export class ListComponent implements OnInit, OnChanges {
       this.onListChange();
   }
 
+  ngOnDestroy() {
+      this.routeSub.unsubscribe();
+  }
+
   onListChange() {
-      this.httpClient.get<OrdersData[]>(environment.serverName + 'api/orders/')
+      const isPage = (this.pageNum && this.pageNum !== 1) ? '&page=' + this.pageNum : '';
+      this.httpClient.get<number>(environment.serverName + 'api/orders/count/?limit=' + this.listLimit + isPage)
+          .subscribe(count => {
+              const cnt = Math.round(count / this.listLimit) + 1;
+              for (let i = 0; i < cnt - 1; i++) {
+                  this.pagination[i] = i;
+              }
+          });
+      this.httpClient.get<OrdersData[]>(environment.serverName + 'api/orders/?limit=' + this.listLimit + isPage)
           .subscribe(orders => {
               const newOrders = [];
               let newOrdersItt = 0;
@@ -86,6 +111,11 @@ export class ListComponent implements OnInit, OnChanges {
               alert(response.message);
               this.ngOnChanges();
           });
+  }
+
+  pageChange(id) {
+      this.pageNum = id;
+      this.ngOnChanges();
   }
 
 }

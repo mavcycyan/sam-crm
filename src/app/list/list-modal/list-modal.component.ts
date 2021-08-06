@@ -1,4 +1,6 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {
+    Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output
+} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {OrderSingleData} from '../../interfaces';
@@ -9,8 +11,8 @@ import {environment} from '../../../environments/environment';
   templateUrl: './list-modal.component.html',
   styleUrls: ['./list-modal.component.sass']
 })
-export class ListModalComponent implements OnInit, OnChanges {
 
+export class ListModalComponent implements OnInit, OnChanges {
 
     form: FormGroup;
     orderDate: string;
@@ -18,7 +20,6 @@ export class ListModalComponent implements OnInit, OnChanges {
 
   constructor(private httpClient: HttpClient) {
   }
-
 
   @Input() orderId = null;
   @Input() isEdit = false;
@@ -106,7 +107,7 @@ export class ListModalComponent implements OnInit, OnChanges {
                           orderPhone: order.body.client_phone,
                           orderPay: order.body.client_paytype,
                           orderDelivery: order.body.client_delivery,
-                          orderComment: order.body.client_comment
+                          orderComment: order.body.client_comment,
                       });
                       this.orderDate = order.body.date;
                       this.itemsRelated = order.body.items;

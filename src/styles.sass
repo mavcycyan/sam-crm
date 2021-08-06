@@ -281,7 +281,11 @@ body
 .modl_order-cls
   display: block
   text-align: right
-  width: 100%
+  width: 24px
+  border: 0
+  background: none
+  cursor: pointer
+  margin-left: auto
 
 .modl_order-col
   width: 100%
@@ -463,3 +467,23 @@ body
   align-items: center
   height: 100vh
   overflow: hidden
+
+.orders-tbl
+  &-pagination
+    margin: 25px -15px 0
+    display: flex
+    justify-content: center
+    &-col
+      padding: 0 15px
+      &.active
+        background: #0e4fdb
+        color: #fff
+      a, button
+        border: 0
+        background: #fff
+        color: #000
+        font-weight: 700
+        padding: 12px 15px
+        text-decoration: none
+        display: flex
+        border-radius: 8px

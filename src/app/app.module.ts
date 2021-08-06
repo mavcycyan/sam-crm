@@ -14,19 +14,19 @@ import {AuthPageComponent} from './auth-page/auth-page.component';
 import {ListModalComponent} from './list/list-modal/list-modal.component';
 import {ModalDirective} from './list/modal.directive';
 import {ReactiveFormsModule} from '@angular/forms';
-import {StockModalComponent} from './stock/stock-modal/stock-modal.component';
 import {ModalStockDirective} from './stock/modal-stock.directive';
+import {StockModalComponent} from './stock/stock-modal/stock-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    StockComponent,
-    StockModalComponent,
     LoginComponent,
     FrontPageComponent,
-    AuthPageComponent,
+    ListComponent,
     ListModalComponent,
+    StockComponent,
+    StockModalComponent,
+    AuthPageComponent,
     ModalDirective,
     ModalStockDirective
   ],
