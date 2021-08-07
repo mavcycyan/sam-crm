@@ -30,14 +30,14 @@ export class ListComponent implements OnInit, OnChanges, OnDestroy {
 
   routeSub: Subscription;
 
-  pageNum = 0;
+  pageNum = 1;
   pagination: Array<number> = [];
 
   constructor(private httpClient: HttpClient,
               private componentFactoryResolver: ComponentFactoryResolver,
               private route: ActivatedRoute) {
       this.routeSub = this.route.params.subscribe(params => {
-          this.pageNum = (params.page) ? params.page : 0;
+          this.pageNum = (params.page) ? params.page : 1;
       });
   }
 
@@ -116,6 +116,13 @@ export class ListComponent implements OnInit, OnChanges, OnDestroy {
   pageChange(id) {
       this.pageNum = id;
       this.ngOnChanges();
+  }
+
+  pagiActive(id) {
+      if (this.pageNum === id) {
+          return true;
+      }
+      return false;
   }
 
 }

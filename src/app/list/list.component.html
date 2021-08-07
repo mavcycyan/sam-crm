@@ -37,7 +37,7 @@
 </div>
 <div class="orders-tbl-pagination">
   <div class="orders-tbl-pagination-col" *ngFor="let page of pagination; index as i">
-    <button type="button" (click)="pageChange(page+1)">{{page+1}}</button>
+    <button type="button" (click)="pageChange(page+1)" [class.active]="pagiActive(page+1)">{{page+1}}</button>
   </div>
 </div>
 <ng-template

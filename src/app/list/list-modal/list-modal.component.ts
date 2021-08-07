@@ -27,7 +27,6 @@ export class ListModalComponent implements OnInit, OnChanges {
   @Output() onListChange: EventEmitter<any> = new EventEmitter<void>();
 
   postData(params) {
-      console.log(params);
       this.httpClient.post<any>(environment.serverName + 'api/orders/', {
           items : [
               {
