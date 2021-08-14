@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, OnChanges, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnChanges, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ListModalComponent} from './list-modal/list-modal.component';
 import {ModalDirective} from './modal.directive';
@@ -18,7 +18,7 @@ export class ListComponent implements OnInit, OnChanges, OnDestroy {
 
   listOrders: OrdersData[] = [];
 
-  listLimit = 5;
+  listLimit = 20;
 
   statusName = {
     new: 'New',
