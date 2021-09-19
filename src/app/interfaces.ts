@@ -29,3 +29,12 @@ export interface StockList {
     stock_count: string;
     sku: string;
 }
+
+export interface UserData {
+    _id?: string;
+    login: string;
+    password: string;
+    email?: string;
+    name?: string;
+    message?: string;
+}

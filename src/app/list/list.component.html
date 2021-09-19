@@ -1,8 +1,8 @@
-<div class="orders-container">
+
   <h1 class="orders-ttl">Orders list</h1>
   <div class="orders-top">
-    <div class="orders-user">Пользователь: Admin</div>
-    <div class="orders-add"><button (click)="showModal()">Добавить заказ</button></div>
+    <div class="orders-user">User: {{userName}}</div>
+    <div class="orders-add"><button (click)="showModal()">Add order</button></div>
   </div>
   <div class="orders-tbl">
     <div class="orders-tbl-row head">
@@ -34,13 +34,12 @@
       </ng-template>
     </div>
   </div>
-</div>
-<div class="orders-tbl-pagination">
-  <div class="orders-tbl-pagination-col" *ngFor="let page of pagination; index as i">
-    <button type="button" (click)="pageChange(page+1)" [class.active]="pagiActive(page+1)">{{page+1}}</button>
+  <div class="orders-tbl-pagination" *ngIf="pagination.length > 1">
+    <div class="orders-tbl-pagination-col" *ngFor="let page of pagination; index as i">
+      <button type="button" (click)="pageChange(page+1)" [class.active]="pagiActive(page+1)">{{page+1}}</button>
+    </div>
   </div>
-</div>
-<ng-template
-        appModal
-        onListChange="onListChange($event)"
-></ng-template>
+  <ng-template
+          appModal
+          onListChange="onListChange($event)"
+  ></ng-template>

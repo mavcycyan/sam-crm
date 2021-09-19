@@ -1,13 +1,15 @@
 <div class="block_auth">
     <div class="block_auth-form">
-        <div class="block_auth-input">
-            <input type="text" placeholder="Login">
-        </div>
-        <div class="block_auth-input">
-            <input type="password" placeholder="Password">
-        </div>
-        <div class="block_auth-button">
-            <a title="Войти" (click)="login()"><img src="" alt="">Войти</a>
-        </div>
+        <form [formGroup]="form" (submit)="login()">
+            <div class="block_auth-input">
+                <input type="text" placeholder="Login" formControlName="login">
+            </div>
+            <div class="block_auth-input">
+                <input type="password" placeholder="Password" formControlName="password">
+            </div>
+            <div class="block_auth-button">
+                <button type="submit" title="Войти"><img src="" alt="">Log in</button>
+            </div>
+        </form>
     </div>
 </div>

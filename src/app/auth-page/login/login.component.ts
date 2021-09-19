@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +8,26 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) { }
+
+  form: FormGroup;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+      this.form = new FormGroup({
+          login: new FormControl('', Validators.required),
+          password: new FormControl('', Validators.required)
+      });
   }
 
   login() {
-    this.authService.login();
-    this.router.navigate(['/']);
+      if (this.form.status !== 'INVALID') {
+          this.authService.login(
+              {
+                  login: this.form.controls.login.value,
+                  password: this.form.controls.password.value}
+              );
+      }
   }
 
 }

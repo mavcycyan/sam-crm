@@ -6,6 +6,7 @@ import {OrdersData} from '../interfaces';
 import {environment} from '../../environments/environment';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/index';
+import {GlobalVars} from '../globals';
 
 @Component({
   selector: 'app-list',
@@ -15,6 +16,8 @@ import {Subscription} from 'rxjs/index';
 export class ListComponent implements OnInit, OnChanges, OnDestroy {
 
   @ViewChild(ModalDirective, {static: false}) modalDir: ModalDirective;
+
+  userName = GlobalVars.userName;
 
   listOrders: OrdersData[] = [];
 

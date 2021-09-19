@@ -4,6 +4,7 @@ import {StockList} from '../interfaces';
 import {ModalStockDirective} from './modal-stock.directive';
 import {StockModalComponent} from './stock-modal/stock-modal.component';
 import {environment} from '../../environments/environment';
+import {GlobalVars} from '../globals';
 
 
 
@@ -15,6 +16,8 @@ import {environment} from '../../environments/environment';
 export class StockComponent implements OnInit, OnChanges {
 
   constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver) { }
+
+  userName = GlobalVars.userName
 
   stockList: StockList[] = []
 

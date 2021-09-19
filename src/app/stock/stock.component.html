@@ -1,8 +1,8 @@
-<div class="orders-container">
+
   <h1 class="orders-ttl">Stock</h1>
   <div class="orders-top">
-    <div class="orders-user">Пользователь: Admin</div>
-    <div class="orders-add"><button (click)="showModal()">Добавить товар</button></div>
+    <div class="orders-user">User: {{userName}}</div>
+    <div class="orders-add"><button (click)="showModal()">Add item</button></div>
   </div>
   <div class="stock-tbl">
     <div class="stock-tbl-row head">
@@ -27,6 +27,5 @@
     </div>
 
   </div>
-</div>
 
 <ng-template appModalStock></ng-template>
