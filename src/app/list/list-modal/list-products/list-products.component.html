@@ -1,0 +1,23 @@
+<div class="modl_order-col-row fdc">
+    <div class="items-tbl">
+        <div class="items-tbl-row head">
+            <div class="items-tbl-id"><b>SKU</b></div>
+            <div class="items-tbl-name"><b>Item</b></div>
+            <div class="items-tbl-price"><b>Price</b></div>
+            <div class="items-tbl-count"><b>Quantity</b></div>
+            <div class="items-tbl-all"><b>Total</b></div>
+            <div class="items-tbl-del"><b></b></div>
+        </div>
+        <!--<div class="items-tbl-row" *ngFor="let item of itemsRelated">-->
+        <div class="items-tbl-row" *ngFor="let item of relItms">
+            <div class="items-tbl-id"><b>{{item.sku}}</b></div>
+            <div class="items-tbl-name"><b>{{item.name}}</b></div>
+            <div class="items-tbl-price"><b>{{item.cost}}</b></div>
+            <div class="items-tbl-count"><b><input type="number" value="{{item.count}}" #counter (input)="recount(item.item, counter.value)" min="1" max="{{item.max_quant}}"></b></div>
+            <div class="items-tbl-all"><b>{{item.cost * item.count}}</b></div>
+            <div class="items-tbl-del"><b></b></div>
+        </div>
+    </div>
+    <!--<a (click)="addItem(orderId)" class="add_item">Add item</a>-->
+    <a (click)="addRow()" class="add_item">Add item</a>
+</div>

@@ -28,6 +28,7 @@ export interface StockList {
     price: string;
     stock_count: string;
     sku: string;
+    item: any;
 }
 
 export interface UserData {

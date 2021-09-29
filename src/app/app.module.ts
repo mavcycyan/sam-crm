@@ -16,6 +16,7 @@ import {ModalDirective} from './list/modal.directive';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ModalStockDirective} from './stock/modal-stock.directive';
 import {StockModalComponent} from './stock/stock-modal/stock-modal.component';
+import {ListProductsComponent} from "./list/list-modal/list-products/list-products.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {StockModalComponent} from './stock/stock-modal/stock-modal.component';
     StockModalComponent,
     AuthPageComponent,
     ModalDirective,
-    ModalStockDirective
+    ModalStockDirective,
+    ListProductsComponent
   ],
   imports: [
     BrowserModule,

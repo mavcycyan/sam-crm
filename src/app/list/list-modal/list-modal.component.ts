@@ -53,15 +53,9 @@ export class ListModalComponent implements OnInit, OnChanges {
   }
 
   patchData(params) {
+      console.log(this.itemsRelated);
       this.httpClient.patch<any>(environment.serverName + 'api/orders/' + params.orderModlId.value, {
-          items : [
-              {
-                  id: '5feb9993c923a51d743e5e65',
-                  name: 'Custom item',
-                  cost: 300,
-                  count: 1
-              }
-          ],
+          items : this.itemsRelated,
           processed_by: '5feb2704be1f681244f8a646',
           status: params.orderStatus.value,
           client_name: params.orderName.value,
